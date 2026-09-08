@@ -6,6 +6,7 @@ const fs = require('fs');
 const ExcelJS = require('exceljs');
 
 const app = express();
+app.set('trust proxy', 1);
 
 function loadJSON(relPath, fallback) {
   try {
