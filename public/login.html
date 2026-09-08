@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SGG Foundry — Dealflow Engine</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body class="login-body">
+  <main class="login-card">
+    <img src="/images/sgg-logo.png" alt="SGG Foundry" class="login-logo" />
+    <h1>Proprietary AI Dealflow Engine</h1>
+    <p class="sub">Enter the access code you were given to open the live demo.</p>
+    <form id="login-form" autocomplete="off">
+      <input id="password" type="password" placeholder="Access code" autofocus />
+      <button type="submit">Enter</button>
+    </form>
+    <p id="login-error" class="error" hidden>That code didn't work. Try again.</p>
+  </main>
+  <script>
+    const form = document.getElementById('login-form');
+    const err = document.getElementById('login-error');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      err.hidden = true;
+      const password = document.getElementById('password').value;
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+      if (res.ok) {
+        window.location.href = '/';
+      } else {
+        err.hidden = false;
+      }
+    });
+  </script>
+</body>
+</html>

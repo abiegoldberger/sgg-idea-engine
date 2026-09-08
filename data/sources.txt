@@ -1,0 +1,24 @@
+# SGG AI Engine — Source List
+#
+# One source per line, four fields separated by " | " (a space, pipe, space):
+#   Name | URL | Category | Notes (notes are optional)
+#
+# Lines starting with # are ignored — use them for your own comments.
+# Blank lines are ignored too. To add a source, just add a new line below —
+# no brackets, quotes, or commas to get right. Save the file and restart
+# the app (npm start) for the engine to pick up the change.
+
+The Consumer VC | https://theconsumervc.substack.com | Newsletter | Consumer brand/tech/commerce deal news
+Or Shalom Trend Forecasting | https://orshalomtrendforecasting.substack.com | Newsletter | Retail trend forecasting
+Branding with Benefits | https://artofthebrand.substack.com | Newsletter | Brand strategy case studies
+
+NielsenIQ (NIQ) | https://nielseniq.com | Research Firm | Consumer intelligence and retail measurement
+PwC | https://www.pwc.com | Research Firm |
+McKinsey & Company | https://www.mckinsey.com | Research Firm |
+Bain & Company | https://www.bain.com | Research Firm |
+Deloitte | https://www.deloitte.com | Research Firm |
+Kantar | https://www.kantar.com | Research Firm |
+Euromonitor International | https://www.euromonitor.com | Research Firm |
+Morgan Stanley Research | https://www.morganstanley.com | Research Firm |
+
+Israel State Comptroller | https://www.mevaker.gov.il | Government / Regulatory | Israeli government audit reports -- strong source for Israel-scoped regulatory "why now" evidence

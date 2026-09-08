@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SGG Foundry — Dealflow Engine</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="/images/sgg-logo.png" alt="SGG Foundry" class="brand-logo" />
+      <span class="brand-tag">Proprietary AI Dealflow Engine</span>
+    </div>
+    <button id="logout" class="ghost-btn">Exit demo</button>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="ideate">Ideate</button>
+    <button class="tab" data-tab="validate">Validate</button>
+    <button class="tab" data-tab="launch">Launch</button>
+    <button class="tab" data-tab="library">Library</button>
+  </nav>
+
+  <p class="process-line">The Foundry process, live and end to end — <strong>Ideate</strong> finds ideas the market hasn't found yet, <strong>Validate</strong> stress-tests any idea you bring it, <strong>Launch</strong> turns an approved idea into a real plan.</p>
+
+  <!-- ============== IDEATE ============== -->
+  <section class="panel active" id="panel-ideate">
+    <div class="hero">
+      <p class="eyebrow">No seed, no field, no steering. It finds the whitespace itself.</p>
+      <h1>One button. It scans, picks a category, and casts a screened, plan-ready idea — live.</h1>
+      <button type="button" id="ideate-generate-btn" class="cast-btn">Generate idea</button>
+      <p class="hint">Every run autonomously picks one of SGG's six focus categories and does the same real research depth as the rest of the pipeline — roughly 3-5 minutes, covering the full source list and screening properly before proposing anything.</p>
+    </div>
+
+    <div class="loading" data-loading-for="ideate" hidden>
+      <div class="pour"><div class="pour-glow"></div></div>
+      <p class="loading-line">Warming the forge…</p>
+    </div>
+
+    <div class="error-box" data-error-for="ideate" hidden></div>
+
+    <div class="result" id="ideate-result" hidden>
+      <div class="result-head">
+        <h2 class="r-name"></h2>
+        <p class="one-liner"></p>
+        <div class="stars"></div>
+      </div>
+
+      <div class="grid three">
+        <div class="card"><h3>Problem</h3><p class="r-problem"></p></div>
+        <div class="card"><h3>Solution</h3><p class="r-solution"></p></div>
+        <div class="card"><h3>Why now</h3><p class="r-why-now"></p></div>
+      </div>
+
+      <h3 class="section-label">Screening gates <span class="depth-badge deep">Full screening</span></h3>
+      <div class="gates"></div>
+
+      <h3 class="section-label">Business plan skeleton</h3>
+      <div class="plan-rows"></div>
+
+      <div class="sources-wrap">
+        <h3 class="section-label">Sources</h3>
+        <ul class="sources-list"></ul>
+      </div>
+
+      <button class="secondary-btn send-to-launch">Build full business plan →</button>
+    </div>
+  </section>
+
+  <!-- ============== VALIDATE ============== -->
+  <section class="panel" id="panel-validate">
+    <div class="hero">
+      <p class="eyebrow">Bring your own idea. Get an honest answer.</p>
+      <h1>Paste an idea. It researches the market and gives you an evidence-backed decision.</h1>
+      <form id="validate-form">
+        <textarea id="validate-idea" rows="4" placeholder="Describe your idea in a sentence or two — the more specific, the better the research."></textarea>
+        <button type="submit" class="cast-btn">Validate idea</button>
+      </form>
+      <p class="hint">Every claim gets checked against real search results, not just how you framed the idea. A deep, multi-angle competitive research pass — direct competitors, adjacent products, and incumbents who could expand in.</p>
+    </div>
+
+    <div class="loading" data-loading-for="validate" hidden>
+      <div class="pour"><div class="pour-glow"></div></div>
+      <p class="loading-line">Warming the forge…</p>
+    </div>
+
+    <div class="error-box" data-error-for="validate" hidden></div>
+
+    <div class="result" id="validate-result" hidden>
+      <div class="result-head">
+        <h2 class="r-name"></h2>
+        <p class="one-liner"></p>
+        <div class="stars"></div>
+      </div>
+
+      <h3 class="section-label">Overview assessment <span class="depth-badge deep">2-3 page research memo</span></h3>
+      <div class="overview-assessment"></div>
+
+      <h3 class="section-label">Primary competitors</h3>
+      <div class="competitors"></div>
+
+      <h3 class="section-label">Screening gates <span class="depth-badge deep">Full validation</span></h3>
+      <div class="gates"></div>
+
+      <div class="card wide">
+        <h3>Why this rating</h3>
+        <p class="r-confidence-rationale"></p>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Key risks</h3>
+          <ul class="risks-list"></ul>
+        </div>
+        <div class="card">
+          <h3>Recommendation</h3>
+          <p class="r-recommendation"></p>
+        </div>
+      </div>
+
+      <div class="sources-wrap">
+        <h3 class="section-label">Sources</h3>
+        <ul class="sources-list"></ul>
+      </div>
+
+      <button class="secondary-btn send-to-launch">Build full business plan →</button>
+    </div>
+  </section>
+
+  <!-- ============== LAUNCH ============== -->
+  <section class="panel" id="panel-launch">
+    <div class="hero">
+      <p class="eyebrow">Turn a validated idea into something you can act on.</p>
+      <h1>A full, investor-ready business plan — not a skeleton.</h1>
+      <form id="launch-form">
+        <textarea id="launch-idea" rows="4" placeholder="Paste the idea (or use “Build full business plan” from Ideate or Validate)."></textarea>
+        <button type="submit" class="cast-btn">Generate business plan</button>
+      </form>
+      <p class="hint">This assumes the idea has already been screened — it focuses on building the plan, not re-litigating whether it's a good idea.</p>
+    </div>
+
+    <div class="loading" data-loading-for="launch" hidden>
+      <div class="pour"><div class="pour-glow"></div></div>
+      <p class="loading-line">Warming the forge…</p>
+    </div>
+
+    <div class="error-box" data-error-for="launch" hidden></div>
+
+    <div class="result plan-doc" id="launch-result" hidden>
+      <div class="result-head">
+        <h2 class="r-name"></h2>
+        <p class="one-liner"></p>
+      </div>
+
+      <h3 class="section-label">Overview</h3>
+      <div class="grid three plan-overview"></div>
+
+      <div class="plan-sections"></div>
+
+      <div class="sources-wrap">
+        <h3 class="section-label">Sources</h3>
+        <ul class="sources-list"></ul>
+      </div>
+
+      <button class="secondary-btn download-plan">Download plan as text</button>
+
+      <h3 class="section-label">One-pager</h3>
+      <div class="one-pager-card" id="one-pager-card"></div>
+      <button class="secondary-btn print-one-pager">Print / Save one-pager as PDF</button>
+
+      <h3 class="section-label">Financial model</h3>
+      <p class="hint">A 24-month projection, computed from the pricing and assumptions above -- download it as a real, editable spreadsheet.</p>
+      <button class="secondary-btn download-excel">Download financial model (Excel)</button>
+    </div>
+  </section>
+
+  <!-- ============== LIBRARY ============== -->
+
+  <section class="panel" id="panel-library">
+    <div class="hero" style="padding-bottom: 24px;">
+      <p class="eyebrow">Every idea the engine has generated so far</p>
+      <h1 style="font-size: clamp(24px, 3vw, 32px);">The Foundry Library</h1>
+    </div>
+    <div id="library-content" class="library-wrap"></div>
+  </section>
+
+  <script src="/app.js"></script>
+</body>
+</html>

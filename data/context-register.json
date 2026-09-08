@@ -1,0 +1,39 @@
+{
+  "source": "SGG Foundry - Context Register (Drive, SGG Foundry Pipeline folder) -- last updated 25 August 2026. This is a static snapshot embedded in the demo engine, not a live connection; re-sync manually if the real register changes.",
+  "weighting_note": "Foundry and In-development overlap is a strong flag. Strategic and Advisory are weak flags, except where the company operates in the exact category being proposed (AMP on home fitness, Arya on relationships and sexual wellness). This is a context register, not a blocklist -- adjacency is often a strength, not a disqualifier.",
+  "foundry": [
+    { "name": "Kinetiqo", "description": "Roye Goldschmidt's signature training method; mobility, strength and resilience, built for longevity rather than short-term results, for all levels from elite athletes to beginners. Distribution runs through Roye's own audience (@roye_gold) and practitioner standing, not a company channel." },
+    { "name": "Flex", "description": "Tech-driven moving and self-storage; climate-controlled, sensor-equipped mobile storage rooms delivered to the door, replacing rental trucks and warehouse trips." },
+    { "name": "Demandoo", "description": "On-demand, tech-based insurance for the shared and gig economies; end-to-end cover built with global insurers, meeting local and global regulation." },
+    { "name": "Jusa Cold Pressed", "description": "Wellness brand; cold-pressed juices, healthy snacks, desserts and detox programmes, sold through a flagship store, online, and partnerships." }
+  ],
+  "in_development": [
+    { "name": "InnerOS", "description": "Clinically informed psychological and performance coaching, with Dr. Itamar Cohen. Being built and validated toward a go/no-go decision. Also defines the clinical ceiling used elsewhere: coaching, not treatment." },
+    { "name": "Oazis", "description": "The airport lounge experience brought into the city: day access to hotel lounges, gyms and wellness amenities. Being built and validated toward a go/no-go decision." },
+    { "name": "FoundryDrive", "description": "Peer-to-peer car rental marketplace, Israel. Still at idea stage." }
+  ],
+  "strategic": [
+    { "name": "Mayflower Entertainment", "description": "50/50 JV; consulting agency connecting brands with entertainment and pop-culture partners, procuring celebrity talent and music for campaigns and events. Founded 2016, LA and New York." },
+    { "name": "InceptionXR", "description": "AR/VR training and immersive learning content for organisations. Exited: acquired by Relias, March 2025." },
+    { "name": "Stern Ariely Saar", "description": "Israeli PR firm founded 1994, affiliate of the Cohen & Wolfe network." },
+    { "name": "The Stern Group", "description": "Events design and production, plus hospitality consulting and amenities; thirty-plus years with private clients, Fortune 500 companies and political leaders." }
+  ],
+  "advisory": [
+    { "name": "AMP", "description": "AI-powered home strength training system; adaptive resistance, expert-led coaching, form guidance, 700+ exercises, used by Olympic athletes. Check any fitness or strength idea against this first." },
+    { "name": "Arya", "description": "Couples wellness subscription; an intimacy concierge combining AI and human sexologists with coaching, guided monthly 'Scenes' and curated product delivery. US-based, founded 2022, roughly $37M raised, 300,000+ couples. Advisory position in progress, not yet closed." },
+    { "name": "The Jaffa", "description": "120-room luxury hotel in a restored 19th-century building in Old Jaffa. Exited: sold to Fattal, May 2025, $123M -- a record for an Israeli hotel." },
+    { "name": "RFR", "description": "Real estate holding and development." },
+    { "name": "The Set (The Set Collection)", "description": "Luxury hotel collection." },
+    { "name": "Soho House", "description": "Members' club and hospitality group." }
+  ],
+  "killed": [
+    { "name": "Athlete Collective / Players' Tribune Israel", "reason": "Market size unproven." },
+    { "name": "Artificial surfing venue (New York)", "reason": "Too capital intensive." },
+    { "name": "Massage knobs", "reason": "Market too small." },
+    { "name": "Zigmond (patient-to-psychologist platform)", "reason": "Declined; company closed 2026." },
+    { "name": "Arya (in-house build-our-own version)", "reason": "Assessed strategically and declined, in favor of the separate Advisory relationship with the actual Arya company listed above." }
+  ],
+  "unresolved_not_yet_categorized": [
+    "SkinFuel", "Who Got Next", "Elevated Living", "Vylit -- these do not appear in the live register yet; do not guess a category for them, just avoid proposing anything that closely resembles them until they're formally placed."
+  ]
+}

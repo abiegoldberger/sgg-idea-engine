@@ -1,0 +1,30 @@
+{
+  "idea_name": "Cue",
+  "one_liner": "A professional, membership-based podcast and video content studio in Tel Aviv, riding the video-podcast boom that's nearly doubled YouTube TV viewing hours in a year.",
+  "problem": "Video podcasting has become a mainstream media format at remarkable speed -- YouTube users streamed over 700 million hours of video podcasts on TVs in October 2025, nearly double the 400 million hours from a year earlier, and more than 70% of podcasters now incorporate video into their shows. Producing this properly requires real equipment and space: multi-camera setups, lighting, and soundproofing that most creators, founders, and small businesses can't build themselves. In Tel Aviv specifically, the only comparable option found is a free recording studio opened in 2022 by ThoughtLeaders, an influencer-marketing company, offered as a promotional perk rather than a dedicated, reliably available paid business -- leaving working professionals and creators without a real paid studio option.",
+  "solution": "Cue is a membership and hourly-rental video and podcast studio offering professional multi-camera recording setups, lighting, and light production support, positioned for founders, creators, and businesses who want to participate in the video-podcast boom without building their own studio. This is a proven, replicable business format -- multiple turn-key podcast studio rental businesses operate successfully and are actively bought and sold in US markets like Los Angeles and Nashville -- just not yet established as a dedicated paid business in Israel.",
+  "why_now": "The underlying behavior is accelerating fast and globally documented: video podcast viewing hours nearly doubled year-over-year, and 53% of US podcast consumers now prefer watching over just listening. Marketplaces like PeerSpace ($40M raised, operating across major global cities) and Israel's own Splacer prove real commercial demand for bookable creative and production spaces -- but both are listings marketplaces connecting renters to existing spaces, not a dedicated, purpose-built studio brand. That leaves the owned-and-operated studio model itself as the open lane in this market.",
+  "gates": [
+    {"id": "G1", "label": "Consumer-oriented", "verdict": "Yes", "note": "Direct-to-consumer and small-business membership/rental model."},
+    {"id": "G2", "label": "Product, Not Tech", "verdict": "Yes", "note": "A physical studio and service business; booking software is a small supporting layer, not the product itself."},
+    {"id": "G3", "label": "Capital", "verdict": "Yes", "note": "Single studio buildout with standard professional-grade equipment fits comfortably within a lean starting check."},
+    {"id": "G4", "label": "Invention", "verdict": "Yes", "note": "An original, SGG-designed and owned studio brand -- not an import of an existing company's actual brand or products, so it's invention, not transfer."},
+    {"id": "G5", "label": "Buildable Team", "verdict": "Yes", "note": "Studio operations and light production support -- standard hiring."},
+    {"id": "G6", "label": "Defined Claim", "verdict": "Yes", "note": "Testable via one studio's booking rate and membership signups against a defined target."},
+    {"id": "G7", "label": "Edge", "verdict": "Yes", "note": "The only Tel Aviv precedent found is a free promotional space tied to a marketing company, not a paid dedicated business; adjacent marketplaces (PeerSpace, Splacer) prove real demand for bookable creative space without themselves operating a purpose-built studio, leaving real room to differentiate as the owned-and-operated version."}
+  ],
+  "confidence_stars": 5,
+  "business_plan": {
+    "problem": "Video podcasting is booming, but Tel Aviv has no dedicated, professionally-run paid studio -- only a single free promotional space tied to a marketing company.",
+    "solution_and_model": "A membership and hourly-rental video/podcast studio with professional equipment and light production support, following a proven, replicable US business format.",
+    "market_and_edge": "Video podcast viewing hours nearly doubled year-over-year globally; the only Tel Aviv precedent is free and promotional, not a real paid business; adjacent marketplaces (PeerSpace, Splacer) prove demand for bookable creative space without themselves being a dedicated studio operator.",
+    "key_challenges": "Existing space-rental marketplaces like Splacer could list competing spaces once the category proves out, and building a reliable creator community takes real marketing -- mitigated by leading with professional-grade equipment and service quality a marketplace listing can't easily replicate.",
+    "go_to_market": "Launch one flagship Tel Aviv studio targeting founders, creators, and small businesses already active in the video-podcast trend, cross-list on marketplaces like Splacer as a secondary booking channel, and prove membership retention before considering a second location."
+  },
+  "sources": [
+    {"title": "Video podcast viewing hours nearly doubled year-over-year on YouTube TVs", "url": "https://www.emarketer.com/insights/the-podcast-industry-report-statistics"},
+    {"title": "ThoughtLeaders opens free podcast recording space in Tel Aviv (2022)", "url": "https://www.prnewswire.com/il/news-releases/thoughtleaders-opens-free-podcast-recording-space-in-tel-aviv-881718954.html"},
+    {"title": "Turn-key podcast studio rental businesses proven and sellable in US markets", "url": "https://www.bizquest.com/business-for-sale/turn-key-podcast-studio-rental-business/BW2413604"},
+    {"title": "PeerSpace raises $5M Series A, operates across major global cities; notes Israel-based Splacer as a comparable marketplace", "url": "https://techcrunch.com/2015/11/10/peerspace-raises-5-million-series-a-expands-to-new-york-city"}
+  ]
+}

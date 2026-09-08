@@ -1,0 +1,51 @@
+{
+  "idea_name": "Cue",
+  "one_liner": "A professional, membership-based podcast and video content studio in Tel Aviv.",
+  "overview_assessment": {
+    "problem": {
+      "evidence_for": "The underlying demand is well-documented and accelerating: YouTube TV viewing hours for video podcasts nearly doubled year-over-year (from roughly 400 million hours in October 2024 to over 700 million in October 2025), and more than 70% of podcasters now shoot video alongside audio. This isn't a niche shift -- 53% of US podcast consumers now say they prefer watching to just listening, which raises the production bar most creators can't clear on their own with a laptop mic.",
+      "evidence_against": "No direct evidence found that the specific shortage of studio access is causing creators to abandon projects or delay launches -- the demand signal is real, but the problem statement (creators are blocked without a studio) is inferred from the broader trend rather than directly measured. Some creators clearly work around this with home setups; the size of the underserved segment specifically needing professional space is not independently quantified."
+    },
+    "solution": {
+      "evidence_for": "The membership-plus-hourly-rental studio format is a proven, replicable business model, not a novel one -- multiple turn-key podcast studio rental businesses operate successfully and are actively bought and sold in US markets like Los Angeles and Nashville, which is real evidence the operating model itself works as a standalone business, not just as a feature of something else.",
+      "evidence_against": "All the proof of the model comes from the US; no evidence was found of this exact owned-and-operated format succeeding in Israel or a comparably-sized market, so there's a real open question about whether Tel Aviv's creator economy is large enough to sustain a dedicated paid studio at similar unit economics."
+    },
+    "market_opportunity": {
+      "evidence_for": "The Tel Aviv-specific gap holds up under a direct check: the only comparable local option found is ThoughtLeaders' free podcast studio, opened in 2022 as a marketing perk tied to an influencer-marketing company, not a dedicated paid business. No evidence of a professionally-run, paid studio was found anywhere in the city.",
+      "evidence_against": "ThoughtLeaders' current operating status is unconfirmed -- if that free studio is still active today, it directly undercuts willingness to pay for a paid alternative unless Cue is clearly superior on equipment, reliability, or service. This is a real, checkable gap in the research that should be resolved before committing capital."
+    },
+    "edge": {
+      "evidence_for": "Two creative-space marketplaces operate in adjacent territory -- PeerSpace ($40M+ raised, multiple global cities) and Israel's own Splacer -- and neither operates its own dedicated studio; they connect renters to existing spaces. That leaves the owned-and-operated studio model itself as a genuinely open lane, since proving demand exists (via these marketplaces) doesn't require anyone to have already built the thing Cue is proposing to build.",
+      "evidence_against": "Splacer's existing reach in Israel's creative-space market is a real double-edged finding: once Cue proves the concept works, Splacer's existing host network could list a competing studio quickly, since Splacer doesn't need to build new infrastructure to do so -- it only needs an existing space owner to list one."
+    }
+  },
+  "competitors": [
+    {"name": "ThoughtLeaders (Tel Aviv)", "scale": "Single free studio, marketing-company-owned", "note": "Opened a free podcast recording studio in 2022 as a promotional perk -- the closest direct precedent found, but current operating status is unconfirmed."},
+    {"name": "Splacer", "scale": "Established Israeli marketplace", "note": "Creative/event space rental marketplace with real local reach -- doesn't operate its own studio but could list a competing one quickly once demand is proven."},
+    {"name": "PeerSpace", "scale": "$40M+ raised, multiple global cities", "note": "US-based creative/production space marketplace -- same listings model as Splacer, no confirmed Israel operations."},
+    {"name": "US turn-key podcast studio businesses (LA, Nashville)", "scale": "Multiple independently-owned, actively bought/sold", "note": "Proof the owned-and-operated paid model works as a real business -- not direct competitors, but the closest comparable operating format."}
+  ],
+  "gates": [
+    {"id": "G1", "label": "Consumer-oriented", "verdict": "Yes", "note": "Direct-to-consumer and small-business membership/rental model."},
+    {"id": "G2", "label": "Product, Not Tech", "verdict": "Yes", "note": "A physical studio and service business; booking software is a small supporting layer, not the product itself."},
+    {"id": "G3", "label": "Capital", "verdict": "Yes", "note": "Single studio buildout fits comfortably within a lean starting check."},
+    {"id": "G4", "label": "Invention", "verdict": "Yes", "note": "An original, SGG-designed and owned studio brand -- invention, not a transfer of an existing company's actual brand or products."},
+    {"id": "G5", "label": "Buildable Team", "verdict": "Yes", "note": "Studio operations and light production support -- standard hiring."},
+    {"id": "G6", "label": "Defined Claim", "verdict": "Yes", "note": "Testable via one studio's booking rate and membership signups against a defined target."},
+    {"id": "G7", "label": "Edge", "verdict": "Yes", "note": "Real, confirmed gap -- but the edge depends on being clearly superior to a possibly-still-free local alternative, not just on being paid and professional."}
+  ],
+  "confidence_stars": 4,
+  "confidence_rationale": "The rating reflects genuinely strong evidence on the trend (video podcasting's growth is well-documented and accelerating) and the specific local gap (no paid dedicated studio was found in Tel Aviv), balanced against two real open questions a deeper check could resolve either way: whether ThoughtLeaders' free studio is still operating, and whether Splacer's existing local reach makes fast imitation more likely than in a market without an established creative-space marketplace. Neither of these is a dealbreaker on its own, but together they're enough to hold this at four stars rather than five until confirmed.",
+  "key_risks": [
+    "If ThoughtLeaders' free studio is still operating, Cue must be clearly superior in equipment, reliability, or service -- not just a paid alternative to a free one.",
+    "Splacer's existing reach in Israel's creative-space market means a competing studio could get listed and discovered quickly once this concept is proven out.",
+    "A longer-term shift toward AI-generated or virtual-avatar podcast content could reduce demand for physical studio space, though no evidence of that displacing demand yet."
+  ],
+  "recommendation": "Pursue -- but confirm ThoughtLeaders' current operating status and build a membership offering (equipment quality, community, reliability) that would hold up even if a free alternative exists, before committing capital to a full buildout.",
+  "sources": [
+    {"title": "Video podcast viewing hours nearly doubled year-over-year on YouTube TVs", "url": "https://www.emarketer.com/insights/the-podcast-industry-report-statistics"},
+    {"title": "ThoughtLeaders opens free podcast recording space in Tel Aviv (2022)", "url": "https://www.prnewswire.com/il/news-releases/thoughtleaders-opens-free-podcast-recording-space-in-tel-aviv-881718954.html"},
+    {"title": "PeerSpace raises $5M Series A; notes Israel-based Splacer as a comparable marketplace", "url": "https://techcrunch.com/2015/11/10/peerspace-raises-5-million-series-a-expands-to-new-york-city"},
+    {"title": "Turn-key podcast studio rental businesses proven and sellable in US markets", "url": "https://www.bizquest.com/business-for-sale/turn-key-podcast-studio-rental-business/BW2413604"}
+  ]
+}
