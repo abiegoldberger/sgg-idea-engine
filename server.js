@@ -481,10 +481,11 @@ async function runEngine({ res, systemPrompt, userMessage, mockFile, maxTokens =
     try {
       result = JSON.parse(cleaned);
     } catch (parseErr) {
-      console.error('[parse error]', parseErr, '\nraw:', rawText.slice(0, 2000), '\nstop_reason:', data.stop_reason, '\nusage:', data.usage);
+      console.error('[parse error]', parseErr.message, '\nraw:', rawText, '\nstop_reason:', data.stop_reason, '\nusage:', data.usage);
       return res.status(502).json({
         error: 'bad_model_output',
-        raw: rawText.slice(0, 2000),
+        raw: rawText,
+        parse_error: parseErr.message,
         stop_reason: data.stop_reason,
         usage: data.usage,
       });
