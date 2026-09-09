@@ -69,6 +69,7 @@ function startLoading(mode) {
   let i = 0;
   line.textContent = lines[0];
   box.hidden = false;
+  box.scrollIntoView({ behavior: 'smooth', block: 'start' });
   loadingTimers[mode] = setInterval(() => {
     i += 1;
     line.textContent = i < lines.length ? lines[i] : STILL_WORKING_LINE;

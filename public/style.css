@@ -284,6 +284,17 @@ textarea {
   background: url('/images/sgg-background.jpg') center top / cover no-repeat, var(--paper);
 }
 
+/* Fills the space below the header/tabs so the pre-generation state
+   (title + button only, nothing else on screen yet) doesn't look like
+   a mostly-empty page -- content is vertically centered in that space. */
+.hero-fill {
+  min-height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .login-logo {
   width: 220px;
   height: auto;
