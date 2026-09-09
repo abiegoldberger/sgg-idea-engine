@@ -275,6 +275,7 @@ app.post('/api/ideate', requireAuth, async (req, res) => {
     userMessage,
     mockFile: 'mock-ideate.json',
     maxSearches: IDEATE_MAX_SEARCHES,
+    maxTokens: 16000,
   });
 });
 
@@ -345,7 +346,7 @@ app.post('/api/validate', requireAuth, async (req, res) => {
     userMessage: `Here is the idea to validate:\n\n${ideaText}`,
     mockFile: 'mock-validate.json',
     maxSearches: VALIDATE_MAX_SEARCHES,
-    maxTokens: 6000,
+    maxTokens: 16000,
   });
 });
 
@@ -423,14 +424,14 @@ app.post('/api/plan', requireAuth, async (req, res) => {
     systemPrompt: PLAN_SYSTEM_PROMPT,
     userMessage: `Here is the idea to build a full business plan for:\n\n${ideaText}`,
     mockFile: 'mock-plan.json',
-    maxTokens: 10000,
+    maxTokens: 16000,
     maxSearches: PLAN_MAX_SEARCHES,
   });
 });
 
 // ---- Shared engine runner ---------------------------------------------
 
-async function runEngine({ res, systemPrompt, userMessage, mockFile, maxTokens = 4000, maxSearches }) {
+async function runEngine({ res, systemPrompt, userMessage, mockFile, maxTokens = 16000, maxSearches }) {
   if (!process.env.ANTHROPIC_API_KEY) {
     const mockPath = path.join(__dirname, 'public', mockFile);
     if (fs.existsSync(mockPath)) {
