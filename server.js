@@ -455,6 +455,7 @@ async function runEngine({ res, systemPrompt, userMessage, mockFile, maxTokens =
         max_tokens: maxTokens,
         system: systemPrompt,
         messages: [{ role: 'user', content: userMessage }],
+        thinking: { type: 'adaptive' },
         tools: [
           {
             type: 'web_search_20250305',
