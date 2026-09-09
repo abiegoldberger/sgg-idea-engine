@@ -201,6 +201,7 @@ document.getElementById('ideate-generate-btn').addEventListener('click', async (
 
     resultEl.querySelector('.send-to-launch').onclick = () => sendToLaunch(summarizeForLaunch(idea, 'ideate'));
 
+    stopLoading('ideate');
     resultEl.hidden = false;
     resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (err) {
@@ -286,6 +287,7 @@ document.getElementById('validate-form').addEventListener('submit', async (e) =>
 
     resultEl.querySelector('.send-to-launch').onclick = () => sendToLaunch(summarizeForLaunch(idea, 'validate'));
 
+    stopLoading('validate');
     resultEl.hidden = false;
     resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (err) {
@@ -383,6 +385,7 @@ document.getElementById('launch-form').addEventListener('submit', async (e) => {
 
     resultEl.querySelector('.download-plan').onclick = () => downloadPlanAsText(plan);
 
+    stopLoading('launch');
     resultEl.hidden = false;
     resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (err) {
