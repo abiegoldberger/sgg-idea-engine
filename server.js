@@ -360,7 +360,7 @@ ${SHARED_PRINCIPLES}
 - Do not re-litigate whether the idea is fundamentally sound (that's what validation is for) -- but do not hide a real, material risk either. If you find a serious competitive or regulatory problem while researching, name it plainly in Key Challenges rather than glossing over it.
 - PRICING IS A REQUIRED, NAMED PART OF THE BUSINESS MODEL SECTION, not an afterthought. Search for real comparable products' pricing and anchor against them by name (e.g. "priced above X's $Y/month, below Z's $W/month, because..."). State an actual price point or range and the tier structure (e.g. free tier plus one paid tier), and give the specific reasoning for where it sits relative to comparables -- never leave pricing vague or unstated.
 - Capital Requirements should be staged (e.g. an initial lean validation stage, then a larger stage once that validates, then a further stage once that answers the next open question), each with a rough dollar figure, a timeframe, and what that stage actually buys -- not a single lump sum with no sequencing.
-- You must also produce a ONE-PAGER (a condensed investor teaser distinct from the full plan -- shorter phrasing, not just copy-pasted section text) and a set of FINANCIAL ASSUMPTIONS. For the assumptions, give clean, specific numbers derived directly from the pricing and market sizing you already researched -- these will be used to compute an actual month-by-month financial projection, so they must be realistic and internally consistent with the Business Model section, not decorative.
+- You must also produce a ONE-PAGER matching SGG's established house format exactly (the same structure used in real SGG one-pagers like the Oazis document: Overview, Thesis, Opportunity, Strategy, Who It Serves, Current Focus, Vision) -- flowing narrative prose in each section, not copy-pasted text from the full plan, and not a list of short labeled fields. And a set of FINANCIAL ASSUMPTIONS -- give clean, specific numbers derived directly from the pricing and market sizing you already researched; these will be used to compute an actual month-by-month financial projection, so they must be realistic and internally consistent with the Business Model section, not decorative.
 - WRITING STYLE: no hedging filler, no "in today's landscape" throat-clearing. State things plainly and confidently -- this is a document a partner would actually forward, not a research summary. Name sources inline the way a person would say them out loud.
 
 OUTPUT FORMAT
@@ -384,12 +384,18 @@ Respond with ONLY a single JSON object -- no markdown fences, no prose before or
     {"heading": "7. Capital Requirements & Next Steps", "body": "350-500 words. A staged capital plan (e.g. validate / pre-seed-equivalent / next stage), each with a rough dollar figure, timeframe, and what it buys, plus the single next decision gate that matters most."}
   ],
   "one_pager": {
-    "tagline": "a punchy 8-12 word tagline, not the same sentence as one_liner",
-    "problem": "1-2 sentences, condensed",
-    "solution": "1-2 sentences, condensed",
-    "market": "1-2 sentences with the single strongest market stat",
-    "edge": "1-2 sentences, condensed",
-    "ask": "1 sentence: the Stage 1 capital ask and what it buys, pulled from the Capital Requirements section"
+    "subtitle": "a punchy 3-6 word subtitle capturing the core thesis in one phrase, e.g. 'Urbanizing the Airport Lounge' -- this is SGG's established house style for one-pager subtitles, not a restated one-liner",
+    "overview": "80-120 words: what the company is, the model (who pays whom for what), and the one-sentence version of why it exists, written as flowing prose",
+    "thesis": "60-100 words: the single core insight this is built on -- often 'X already solved this problem in context A; this applies the same logic to context B'",
+    "opportunity": "80-120 words: the market evidence, named comparable companies or analogues, and why the timing is right now",
+    "strategy": "60-100 words: how the business actually operates and makes money -- the mechanics, not the vision",
+    "who_it_serves": [
+      {"segment": "a customer/stakeholder type", "benefit": "5-10 word benefit to them"},
+      {"segment": "a second customer/stakeholder type", "benefit": "5-10 word benefit to them"},
+      {"segment": "a third customer/stakeholder type", "benefit": "5-10 word benefit to them"}
+    ],
+    "current_focus": "60-100 words: what's being built or proven right now, concretely -- the immediate proof-of-concept, not the long-term vision",
+    "vision": "60-100 words: what this becomes at scale, tying back to SGG's track record and the specific ask -- ending on the capital stage and what it buys"
   },
   "financials": {
     "currency": "USD or the currency actually used in the Business Model section (e.g. NIS) -- must match",
@@ -522,75 +528,190 @@ async function buildFinancialWorkbook(planTitle, financials) {
     fixed_monthly_costs: Number(financials.fixed_monthly_costs) || 0,
   };
 
-  // --- Assumptions sheet ---
-  const asm = wb.addWorksheet('Assumptions');
-  asm.columns = [{ width: 34 }, { width: 18 }, { width: 40 }];
-  asm.addRow(['Assumption', 'Value', 'Note']);
-  asm.getRow(1).font = { bold: true };
-  asm.addRow(['Price per unit', f.price_per_unit, f.price_unit_label]);
-  asm.addRow(['Starting volume / month', f.starting_volume_per_month, '']);
-  asm.addRow(['Monthly growth rate (%)', f.monthly_growth_rate_pct, '']);
-  asm.addRow(['Variable cost (% of revenue)', f.variable_cost_pct_of_revenue, '']);
-  asm.addRow(['Fixed monthly costs', f.fixed_monthly_costs, '']);
-  asm.addRow(['Currency', f.currency, '']);
-  if (financials.notes) {
-    asm.addRow([]);
-    asm.addRow(['Notes', financials.notes]);
+  // House style, matched to SGG's real financial model documents (e.g. the
+  // Oazis projections) -- Montserrat, muted blue-gray header bars, a darker
+  // slate-blue divider bar between sections. Deliberately NOT the website's
+  // own charcoal/ember palette -- this is a separate, established house
+  // style for financial deliverables specifically.
+  const CURRENCY_SYMBOLS = { USD: '$', NIS: '\u20aa', EUR: '\u20ac', GBP: '\u00a3' };
+  const sym = CURRENCY_SYMBOLS[f.currency] || (f.currency + ' ');
+  const moneyFmt = `${sym}#,##0`;
+  const FONT_NAME = 'Montserrat';
+  const HEADER_FILL = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFDCE5F1' } };
+  const DIVIDER_FILL = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF919EB4' } };
+  const BASE_FONT = { name: FONT_NAME, size: 10 };
+  const HEADER_FONT = { name: FONT_NAME, size: 10, bold: true };
+  const TITLE_FONT = { name: FONT_NAME, size: 13, bold: true };
+  const SUB_FONT = { name: FONT_NAME, size: 9, italic: true, color: { argb: 'FF666666' } };
+  const NOTE_FONT = { name: FONT_NAME, size: 10, italic: true };
+
+  function titleRow(sheet, subtitle) {
+    sheet.mergeCells('A1:D1');
+    sheet.getCell('A1').value = planTitle || 'SGG Foundry Financial Model';
+    sheet.getCell('A1').font = TITLE_FONT;
+    sheet.mergeCells('A2:D2');
+    sheet.getCell('A2').value = subtitle;
+    sheet.getCell('A2').font = SUB_FONT;
+    sheet.addRow([]);
   }
-  // Named cell locations: B2 price, B3 volume, B4 growth%, B5 var%, B6 fixed
+
+  function dividerRow(sheet, width) {
+    const r = sheet.addRow([]);
+    for (let c = 1; c <= width; c++) sheet.getCell(r.number, c).fill = DIVIDER_FILL;
+    return r;
+  }
+
+  function headerRow(sheet, values) {
+    const r = sheet.addRow(values);
+    r.eachCell((c) => { c.fill = HEADER_FILL; c.font = HEADER_FONT; });
+    return r;
+  }
+
+  // --- Highlights (Summary) sheet -- mirrors the real model's Key Figures / Growth Plan Results pattern ---
+  const hi = wb.addWorksheet('Highlights');
+  hi.columns = [{ width: 34 }, { width: 16 }, { width: 16 }];
+  titleRow(hi, 'Key figures and growth plan results, Years 1-2');
+
+  const computed = computeProjection(f);
+  const yearVolume = (y) => computed.filter((m) => Math.ceil(m.month / 12) === y).reduce((s, m) => s + m.volume, 0);
+  const yearRevenue = (y) => computed.filter((m) => Math.ceil(m.month / 12) === y).reduce((s, m) => s + m.revenue, 0);
+  const yearNetIncome = (y) => computed.filter((m) => Math.ceil(m.month / 12) === y).reduce((s, m) => s + m.netIncome, 0);
+
+  headerRow(hi, ['Key Figures', 'Year 1', 'Year 2']);
+  const volRow = hi.addRow(['Total volume', yearVolume(1), yearVolume(2)]);
+  volRow.eachCell((c) => { c.font = BASE_FONT; });
+  [volRow.getCell(2), volRow.getCell(3)].forEach((c) => { c.numFmt = '#,##0'; });
+  const priceRow = hi.addRow([`Price (${f.price_unit_label})`, f.price_per_unit, f.price_per_unit]);
+  priceRow.eachCell((c) => { c.font = NOTE_FONT; });
+  [priceRow.getCell(2), priceRow.getCell(3)].forEach((c) => { c.numFmt = moneyFmt; });
+
+  dividerRow(hi, 3);
+
+  headerRow(hi, ['Growth Plan Results', 'Year 1', 'Year 2']);
+  const revRow = hi.addRow(['Total Revenue', yearRevenue(1), yearRevenue(2)]);
+  revRow.eachCell((c) => { c.font = HEADER_FONT; });
+  [revRow.getCell(2), revRow.getCell(3)].forEach((c) => { c.numFmt = moneyFmt; });
+  const niRow = hi.addRow(['Net Income', yearNetIncome(1), yearNetIncome(2)]);
+  niRow.eachCell((c) => { c.font = HEADER_FONT; });
+  [niRow.getCell(2), niRow.getCell(3)].forEach((c) => { c.numFmt = moneyFmt; });
+  const marginRow = hi.addRow(['% Margin',
+    yearRevenue(1) ? niRow.getCell(2).value / revRow.getCell(2).value : 0,
+    yearRevenue(2) ? niRow.getCell(3).value / revRow.getCell(3).value : 0]);
+  marginRow.eachCell((c) => { c.font = NOTE_FONT; });
+  [marginRow.getCell(2), marginRow.getCell(3)].forEach((c) => { c.numFmt = '0%'; });
+
+  dividerRow(hi, 3);
+
+  // --- Set Up Costs sheet -- mirrors the real model's simple itemized pattern ---
+  const setup = wb.addWorksheet('Set Up Costs');
+  setup.columns = [{ width: 34 }, { width: 18 }];
+  titleRow(setup, `${planTitle || 'This venture'} \u2014 estimated Stage 2 (launch) set-up costs`);
+  headerRow(setup, ['Item', 'Estimated Cost']);
+  const setupItems = [
+    ['Buildout / Fit-out', Math.round(f.fixed_monthly_costs * 3)],
+    ['Equipment', Math.round(f.fixed_monthly_costs * 1.5)],
+    ['Design / Branding', Math.round(f.fixed_monthly_costs * 0.5)],
+    ['Initial Marketing', Math.round(f.fixed_monthly_costs * 0.5)],
+    ['Legal & Licensing', Math.round(f.fixed_monthly_costs * 0.3)],
+    ['Working Capital Buffer', Math.round(f.fixed_monthly_costs * 3)],
+  ];
+  const setupRowNums = [];
+  setupItems.forEach(([item, cost]) => {
+    const r = setup.addRow([item, cost]);
+    r.eachCell((c) => { c.font = BASE_FONT; });
+    r.getCell(2).numFmt = moneyFmt;
+    setupRowNums.push(r.number);
+  });
+  const totalRow = setup.addRow(['Total', { formula: `SUM(B${setupRowNums[0]}:B${setupRowNums[setupRowNums.length - 1]})` }]);
+  totalRow.eachCell((c) => { c.font = HEADER_FONT; c.fill = HEADER_FILL; });
+  totalRow.getCell(2).numFmt = moneyFmt;
+  setup.addRow([]);
+  const setupNote = setup.addRow(['Note', 'These figures are estimated from the Business Model section\'s fixed-cost assumption and should be replaced with real vendor quotes before this stage is funded.']);
+  setupNote.getCell(1).font = HEADER_FONT;
+  setupNote.getCell(2).font = SUB_FONT;
+  setup.mergeCells(`B${setupNote.number}:D${setupNote.number}`);
 
   // --- Monthly Projection sheet (real formulas, editable in Excel) ---
   const proj = wb.addWorksheet('Monthly Projection');
   proj.columns = [
-    { header: 'Month', width: 8 },
-    { header: 'Volume', width: 14 },
-    { header: 'Revenue', width: 14 },
-    { header: 'Variable Costs', width: 16 },
-    { header: 'Gross Profit', width: 14 },
-    { header: 'Fixed Costs', width: 14 },
-    { header: 'Net Income', width: 14 },
-    { header: 'Cumulative Cash', width: 16 },
+    { width: 8 }, { width: 14 }, { width: 14 }, { width: 16 },
+    { width: 14 }, { width: 14 }, { width: 14 }, { width: 16 },
   ];
-  proj.getRow(1).font = { bold: true };
+  titleRow(proj, '24-month projection, computed live from the Assumptions below.');
+
+  headerRow(proj, ['Assumption', 'Value', 'Note']);
+  const asmRows = [
+    ['Price per unit', f.price_per_unit, f.price_unit_label, moneyFmt],
+    ['Starting volume / month', f.starting_volume_per_month, '', '#,##0'],
+    ['Monthly growth rate (%)', f.monthly_growth_rate_pct, '', '0.0"%"'],
+    ['Variable cost (% of revenue)', f.variable_cost_pct_of_revenue, '', '0.0"%"'],
+    ['Fixed monthly costs', f.fixed_monthly_costs, '', moneyFmt],
+    ['Currency', f.currency, '', null],
+  ];
+  const asmStartRow = proj.rowCount + 1;
+  asmRows.forEach(([label, value, note, fmt]) => {
+    const r = proj.addRow([label, value, note]);
+    r.eachCell((c) => { c.font = BASE_FONT; });
+    if (fmt) r.getCell(2).numFmt = fmt;
+  });
+  // Named row offsets within this sheet: price=asmStartRow, volume=+1, growth=+2, varcost=+3, fixed=+4
+  const priceCell = `B${asmStartRow}`;
+  const volCell = `B${asmStartRow + 1}`;
+  const growthCell = `B${asmStartRow + 2}`;
+  const varCell = `B${asmStartRow + 3}`;
+  const fixedCell = `B${asmStartRow + 4}`;
+
+  dividerRow(proj, 8);
+  const projHeaderRow = headerRow(proj, ['Month', 'Volume', 'Revenue', 'Variable Costs', 'Gross Profit', 'Fixed Costs', 'Net Income', 'Cumulative Cash']);
+  const headerRowNum = projHeaderRow.number;
 
   for (let m = 1; m <= 24; m++) {
-    const row = m + 1; // row 2 = month 1
+    const row = headerRowNum + m;
+    const prevRow = row - 1;
     const volumeCell = `B${row}`;
     if (m === 1) {
-      proj.getCell(volumeCell).value = { formula: 'Assumptions!$B$3' };
+      proj.getCell(volumeCell).value = { formula: volCell };
     } else {
-      proj.getCell(volumeCell).value = { formula: `B${row - 1}*(1+Assumptions!$B$4/100)` };
+      proj.getCell(volumeCell).value = { formula: `B${prevRow}*(1+${growthCell}/100)` };
     }
     proj.getCell(`A${row}`).value = m;
-    proj.getCell(`C${row}`).value = { formula: `${volumeCell}*Assumptions!$B$2` };
-    proj.getCell(`D${row}`).value = { formula: `C${row}*Assumptions!$B$5/100` };
+    proj.getCell(`C${row}`).value = { formula: `${volumeCell}*${priceCell}` };
+    proj.getCell(`D${row}`).value = { formula: `C${row}*${varCell}/100` };
     proj.getCell(`E${row}`).value = { formula: `C${row}-D${row}` };
-    proj.getCell(`F${row}`).value = { formula: 'Assumptions!$B$6' };
+    proj.getCell(`F${row}`).value = { formula: fixedCell };
     proj.getCell(`G${row}`).value = { formula: `E${row}-F${row}` };
     proj.getCell(`H${row}`).value =
-      m === 1 ? { formula: `G${row}` } : { formula: `H${row - 1}+G${row}` };
+      m === 1 ? { formula: `G${row}` } : { formula: `H${prevRow}+G${row}` };
+    ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].forEach((col) => {
+      proj.getCell(`${col}${row}`).font = BASE_FONT;
+    });
   }
   ['C', 'D', 'E', 'F', 'G', 'H'].forEach((col) => {
-    for (let r = 2; r <= 25; r++) proj.getCell(`${col}${r}`).numFmt = '#,##0';
+    for (let r = headerRowNum + 1; r <= headerRowNum + 24; r++) proj.getCell(`${col}${r}`).numFmt = moneyFmt;
   });
+  proj.getCell(`B${headerRowNum + 1}`).numFmt = '#,##0';
+  for (let r = headerRowNum + 2; r <= headerRowNum + 24; r++) proj.getCell(`B${r}`).numFmt = '#,##0.0';
+  proj.views = [{ state: 'frozen', ySplit: headerRowNum }];
 
   // --- Summary sheet ---
-  const computed = computeProjection(f);
   const breakevenEntry = computed.find((row) => row.cumulative >= 0);
   const summary = wb.addWorksheet('Summary');
   summary.columns = [{ width: 30 }, { width: 20 }];
-  summary.addRow(['Metric', 'Value']);
-  summary.getRow(1).font = { bold: true };
-  summary.addRow(['Year 1 Revenue', { formula: "SUM('Monthly Projection'!C2:C13)" }]);
-  summary.addRow(['Year 2 Revenue', { formula: "SUM('Monthly Projection'!C14:C25)" }]);
-  summary.addRow(['Cumulative cash at month 24', { formula: "'Monthly Projection'!H25" }]);
-  summary.addRow(['Breakeven month', breakevenEntry ? breakevenEntry.month : 'Not within 24 months']);
-  summary.getCell('B2').numFmt = '#,##0';
-  summary.getCell('B3').numFmt = '#,##0';
-  summary.getCell('B4').numFmt = '#,##0';
+  titleRow(summary, 'Headline figures, computed from the Monthly Projection sheet.');
+  headerRow(summary, ['Metric', 'Value']);
+  const r1 = summary.addRow(['Year 1 Revenue', { formula: `SUM('Monthly Projection'!C${headerRowNum + 1}:C${headerRowNum + 12})` }]);
+  const r2 = summary.addRow(['Year 2 Revenue', { formula: `SUM('Monthly Projection'!C${headerRowNum + 13}:C${headerRowNum + 24})` }]);
+  const r3 = summary.addRow(['Cumulative cash at month 24', { formula: `'Monthly Projection'!H${headerRowNum + 24}` }]);
+  const r4 = summary.addRow(['Breakeven month', breakevenEntry ? breakevenEntry.month : 'Not within 24 months']);
+  [r1, r2, r3].forEach((r) => { r.getCell(2).numFmt = moneyFmt; });
+  [r1, r2, r3, r4].forEach((r) => r.eachCell((c) => { c.font = BASE_FONT; }));
+  r1.getCell(1).font = HEADER_FONT; r2.getCell(1).font = HEADER_FONT;
+  r3.getCell(1).font = HEADER_FONT; r4.getCell(1).font = HEADER_FONT;
   summary.addRow([]);
-  summary.addRow(['Generated by', 'SGG Foundry AI Dealflow Engine']);
-  summary.addRow(['Plan', planTitle || '']);
+  const genRow = summary.addRow(['Generated by', 'SGG Foundry AI Dealflow Engine']);
+  genRow.eachCell((c) => { c.font = SUB_FONT; });
+  const dateRow = summary.addRow(['Date', new Date().toISOString().slice(0, 10)]);
+  dateRow.eachCell((c) => { c.font = SUB_FONT; });
 
   return wb;
 }

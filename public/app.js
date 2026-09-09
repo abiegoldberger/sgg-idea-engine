@@ -362,13 +362,19 @@ document.getElementById('launch-form').addEventListener('submit', async (e) => {
     const onePagerEl = resultEl.querySelector('#one-pager-card');
     if (plan.one_pager) {
       const op = plan.one_pager;
+      const whoServesHtml = (op.who_it_serves || [])
+        .map((seg) => `<div class="op-segment"><p class="op-seg-title">${seg.segment || ''}</p><p class="op-seg-benefit">${seg.benefit || ''}</p></div>`)
+        .join('');
       onePagerEl.innerHTML = `
-        <h4 class="op-tagline">${op.tagline || ''}</h4>
-        <div class="op-row"><span class="op-label">Problem</span><p>${op.problem || ''}</p></div>
-        <div class="op-row"><span class="op-label">Solution</span><p>${op.solution || ''}</p></div>
-        <div class="op-row"><span class="op-label">Market</span><p>${op.market || ''}</p></div>
-        <div class="op-row"><span class="op-label">Edge</span><p>${op.edge || ''}</p></div>
-        <div class="op-row"><span class="op-label">The Ask</span><p>${op.ask || ''}</p></div>
+        <p class="op-subtitle">${op.subtitle || ''}</p>
+        <h4 class="op-section-h">Overview</h4><p>${op.overview || ''}</p>
+        <h4 class="op-section-h">The Thesis</h4><p>${op.thesis || ''}</p>
+        <h4 class="op-section-h">The Opportunity</h4><p>${op.opportunity || ''}</p>
+        <h4 class="op-section-h">Strategy</h4><p>${op.strategy || ''}</p>
+        <h4 class="op-section-h">Who It Serves</h4>
+        <div class="op-who-serves">${whoServesHtml}</div>
+        <h4 class="op-section-h">Current Focus</h4><p>${op.current_focus || ''}</p>
+        <h4 class="op-section-h">Vision</h4><p>${op.vision || ''}</p>
       `;
     } else {
       onePagerEl.innerHTML = '<p class="hint">No one-pager returned for this run.</p>';
@@ -399,28 +405,91 @@ document.getElementById('launch-form').addEventListener('submit', async (e) => {
 function printOnePager(plan) {
   const op = plan.one_pager || {};
   const w = window.open('', '_blank');
+  const title = (plan.plan_title || '').replace(/^Business Plan:\s*/i, '');
+  const whoServes = (op.who_it_serves || [])
+    .map((seg) => `
+      <div class="segment">
+        <p class="seg-title"><span class="bullet">o</span> ${seg.segment || ''}</p>
+        <p class="seg-benefit">${seg.benefit || ''}</p>
+      </div>`)
+    .join('');
   w.document.write(`
     <html><head><title>${plan.plan_title} - One Pager</title>
     <style>
-      body { font-family: Georgia, serif; max-width: 640px; margin: 60px auto; color: #1a1918; }
-      h1 { font-size: 26px; margin-bottom: 4px; }
-      h2 { font-size: 15px; color: #b08d57; font-weight: normal; margin-top: 0; }
-      .row { margin-bottom: 18px; }
-      .label { font-family: monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #b08d57; display: block; margin-bottom: 4px; }
-      p { margin: 0; line-height: 1.5; }
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap');
+      * { box-sizing: border-box; }
+      body {
+        font-family: Georgia, 'Times New Roman', serif;
+        max-width: 800px; margin: 0 auto; padding: 50px 56px 40px;
+        color: #262624;
+        background: url('/images/sgg-background.jpg') center top / cover no-repeat, #ffffff;
+      }
+      .letterhead { text-align: center; margin-bottom: 20px; }
+      .letterhead img { height: 56px; width: auto; }
+      h1 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 20px; font-weight: 700; letter-spacing: 0.02em;
+        text-align: center; text-transform: uppercase; color: #3a3a38;
+        margin: 0 0 4px;
+      }
+      h2 {
+        font-size: 13px; font-style: italic; font-weight: 600;
+        text-align: center; color: #6b6b68; margin: 0 0 26px;
+      }
+      h3 {
+        font-size: 12.5px; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 0.03em; color: #262624; margin: 20px 0 6px;
+      }
+      p { margin: 0 0 4px; line-height: 1.55; font-size: 12.5px; text-align: justify; }
+      .who-serves { display: flex; gap: 24px; margin-top: 8px; }
+      .segment { flex: 1; }
+      .seg-title { font-weight: 700; text-align: left; margin-bottom: 4px; }
+      .seg-benefit { text-align: left; font-style: normal; }
+      .bullet { font-weight: 700; margin-right: 4px; }
+      .footer {
+        margin-top: 30px; padding-top: 14px; border-top: 1px solid #d8d5cc;
+        text-align: center;
+      }
+      .footer .ft-title { font-weight: 700; text-transform: uppercase; font-size: 12px; margin: 0 0 2px; }
+      .footer .ft-subtitle { font-style: italic; font-size: 11px; color: #6b6b68; margin: 0 0 10px; text-transform: uppercase; }
+      .footer .contact { font-size: 11px; color: #2a5db0; }
+      @media print { body { padding: 20px 32px; } }
     </style></head><body>
-      <h1>${plan.plan_title || ''}</h1>
-      <h2>${op.tagline || ''}</h2>
-      <div class="row"><span class="label">Problem</span><p>${op.problem || ''}</p></div>
-      <div class="row"><span class="label">Solution</span><p>${op.solution || ''}</p></div>
-      <div class="row"><span class="label">Market</span><p>${op.market || ''}</p></div>
-      <div class="row"><span class="label">Edge</span><p>${op.edge || ''}</p></div>
-      <div class="row"><span class="label">The Ask</span><p>${op.ask || ''}</p></div>
+      <div class="letterhead"><img src="/images/sgg-logo.png" alt="SGG Foundry" /></div>
+      <h1>SGG Foundry's Next Venture: ${title}</h1>
+      <h2>${op.subtitle || ''}</h2>
+
+      <h3>Overview</h3>
+      <p>${op.overview || ''}</p>
+
+      <h3>The Thesis</h3>
+      <p>${op.thesis || ''}</p>
+
+      <h3>The Opportunity</h3>
+      <p>${op.opportunity || ''}</p>
+
+      <h3>Strategy</h3>
+      <p>${op.strategy || ''}</p>
+
+      <h3>Who It Serves</h3>
+      <div class="who-serves">${whoServes}</div>
+
+      <h3>Current Focus</h3>
+      <p>${op.current_focus || ''}</p>
+
+      <h3>Vision</h3>
+      <p>${op.vision || ''}</p>
+
+      <div class="footer">
+        <p class="ft-title">SGG Foundry's Next Venture: ${title}</p>
+        <p class="ft-subtitle">${op.subtitle || ''}</p>
+        <p class="contact">+972.(0)3.641.1112 &nbsp;|&nbsp; info@SternGlobalGroup.com &nbsp;|&nbsp; www.SternGlobalGroup.com</p>
+      </div>
     </body></html>
   `);
   w.document.close();
   w.focus();
-  setTimeout(() => w.print(), 300);
+  setTimeout(() => w.print(), 400);
 }
 
 async function downloadFinancialModel(planTitle, financials) {

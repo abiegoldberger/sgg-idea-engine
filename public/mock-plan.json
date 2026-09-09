@@ -37,12 +37,18 @@
     }
   ],
   "one_pager": {
-    "tagline": "The studio Tel Aviv's video-podcast boom doesn't have yet",
-    "problem": "Video podcasting has nearly doubled in a year, but Tel Aviv has no dedicated paid studio -- only a free promotional space tied to a marketing company.",
-    "solution": "A membership and hourly-rental studio with professional equipment, following a business format already proven and sellable in US markets.",
-    "market": "Video podcast viewing hours nearly doubled year-over-year on YouTube TVs, and 53% of US podcast consumers now prefer watching to listening.",
-    "edge": "Confirmed absence of a paid dedicated studio locally, backed by real demand proof from adjacent marketplaces that don't operate one themselves.",
-    "ask": "$25K to validate demand and secure a location, ahead of a $120K buildout once that's confirmed."
+    "subtitle": "The Studio the Video-Podcast Boom Doesn't Have Yet",
+    "overview": "Cue is a membership and hourly-rental video and podcast production studio in Tel Aviv, built on a straightforward model: creators and businesses pay for professional-grade recording time instead of building their own studio. Founders, podcasters, and small businesses get multi-camera equipment, lighting, and light production support on demand; Cue owns the equipment, the space, and the booking relationship connecting them.",
+    "thesis": "Tel Aviv already has a version of this problem solved once, informally: ThoughtLeaders opened a free podcast studio in 2022 as a marketing perk. Cue takes that same proven format -- a dedicated recording space for creators -- and builds it as a real, reliable, professionally-run business rather than a promotional side project.",
+    "opportunity": "The pieces of this model are already proven elsewhere. Multiple turn-key podcast studio rental businesses operate successfully and are actively bought and sold in US markets like Los Angeles and Nashville. YouTube TV viewing hours for video podcasts nearly doubled year-over-year, and 53% of US podcast consumers now prefer watching to listening. No paid, professionally-equipped studio serving Tel Aviv's creator and startup community currently exists -- that is the whitespace Cue is built to occupy.",
+    "strategy": "Cue leads with hourly bookings and a discounted monthly membership, anchored against comparable production-space pricing on marketplaces like PeerSpace. Membership converts occasional users into predictable recurring revenue; production add-ons and off-peak private bookings provide secondary revenue on top.",
+    "who_it_serves": [
+      { "segment": "Independent creators", "benefit": "professional equipment without the capital cost of owning it" },
+      { "segment": "Startups & small businesses", "benefit": "a reliable space for recurring video content" },
+      { "segment": "Marketplaces (Splacer, PeerSpace)", "benefit": "a real studio to list, not just another host" }
+    ],
+    "current_focus": "SGG Foundry is building Cue around a single flagship Tel Aviv studio: a curated launch community of known local creators, a soft-launch period to build word-of-mouth, and a direct comparison to ThoughtLeaders' free offering on reliability and equipment quality -- built to prove real booking and membership retention before any second-location decision.",
+    "vision": "SGG Foundry is building Cue with the same discipline that has taken its portfolio to a combined valuation above $400M: proving demand at a single flagship location before scaling. A $25K validation stage confirms real willingness to pay ahead of a $120K buildout once that demand is confirmed."
   },
   "financials": {
     "currency": "USD",

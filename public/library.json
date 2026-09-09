@@ -3,11 +3,17 @@
   "Media & Entertainment": [],
   "Leisure & Hospitality": [
     { "idea_name": "Cooldown", "one_liner": "A branded, membership-based run club with a real post-run social space \u2014 riding the trend already pushing Strava toward a $2.2B IPO." },
-    { "idea_name": "Dry Dock", "one_liner": "Israel's first dedicated low- and no-alcohol bar, bringing a format already proven in five global cities to a market with none of it." }
+    { "idea_name": "Dry Dock", "one_liner": "Israel's first dedicated low- and no-alcohol bar, bringing a format already proven in five global cities to a market with none of it." },
+    { "idea_name": "Muster", "one_liner": "A paid membership for real-world social activity in a single city \u2014 running, climbing, cooking, dinners \u2014 with paid hosts instead of volunteers." }
   ],
   "Health & Wellness": [
-    { "idea_name": "Unplugged", "one_liner": "Israel's first screen-free after-school club, riding the 2026 digital-minimalism wave \u2014 dumbphone sales up 25%, craft sales up 136%." }
+    { "idea_name": "Second Half", "one_liner": "A strength studio built entirely for the 55+ body \u2014 small-group sessions, coaches trained for older-adult resistance work, programming organized around real function, not weight loss." },
+    { "idea_name": "The Yard", "one_liner": "A paid after-school club for 11-16s built around phone-free structured activity \u2014 music rooms, a workshop, a kitchen, a court \u2014 for the hours between school ending and screens taking over." }
   ],
-  "Food & Beverage": [],
-  "Retail & Luxury": []
+  "Food & Beverage": [
+    { "idea_name": "Growing Season", "one_liner": "A functional food and drink brand for kids 5-14, with published third-party contaminant testing per batch, for parents who no longer trust the label alone." }
+  ],
+  "Retail & Luxury": [
+    { "idea_name": "Handover", "one_liner": "A resale service for children's clothing and gear with a store-credit mechanic and centralized processing, replacing what parents currently do through scattered Facebook groups." }
+  ]
 }
